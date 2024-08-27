@@ -1,5 +1,18 @@
 <main class="main">
   <div class="inner">
+    <h1><%= @user.name %></h1>
+    <p>プロフィール: <%= @user.profile %></p>
+    <p>所属: <%= @user.occupation %></p>
+    <p>役職: <%= @user.position %></p>
+
+    <h2>投稿したプロトタイプ</h2>
+    <ul>
+      <% @prototypes.each do |prototype| %>
+        <li>
+          <%= link_to prototype.title, prototype_path(prototype) %>
+        </li>
+      <% end %>
+    </ul>
     <div class="prototype__wrapper">
       <p class="prototype__hedding">
         <%= @prototype.title %>
@@ -60,7 +73,6 @@
     </div>
 
     <div class="user__protospaces">
-      <h2>投稿したプロトスペース一覧</h2>
       <ul>
         <%= render partial: 'prototypes/prototype', collection: @protospaces %>
       </ul>
